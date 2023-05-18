@@ -49,6 +49,23 @@ function ComDetail() {
 	const userId = useSelector((state: RootState) => {
 		return state.strr.userId;
 	});
+	const urlRegex = /(https?:\/\/[^\s]+)/g;
+
+  const checkUrl = (text: string) => {
+    if (text.match(urlRegex)) {
+      const textWithLinks = text.replace(urlRegex, (url) => {
+        return `${'<a href="' + url + '" target="_blank">' + url + "</a>"}`;
+      });
+      return (
+        <div
+          className="message mine"
+          dangerouslySetInnerHTML={{ __html: textWithLinks }}
+        ></div>
+      );
+    } else {
+      return <div>{text}</div>;
+    }
+  };
 	const delPost = async() => {
 		const header = {
 			"Authorization": Number(userId),
@@ -140,7 +157,7 @@ function ComDetail() {
 				}
 			</div>
 			<div className="detail-content">
-				{data?.content}
+				{data?.content !== undefined && checkUrl(data?.content)}
 				<div className="detail_contet-bottom">
 					<div className="bottom-writer"><img src={data?.anonymousProfileImageUrl} alt="writer"/>{data?.nickname}</div>
 					<div className="bottom-btn">

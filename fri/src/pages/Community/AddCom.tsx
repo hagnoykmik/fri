@@ -129,7 +129,6 @@ function AddCom() {
   );
 
   const createPost = async (formData: FormData) => {
-    alert("눌림")
     try {
       const header = {
         // "Content-Type": "multipart/form-data",
@@ -141,7 +140,6 @@ function AddCom() {
       });
       navigate("/board/" + res.data.boardId)
     } catch (e) {
-      alert("눌림")
       console.log(e);
     }
   };

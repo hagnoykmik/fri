@@ -14,6 +14,6 @@ public interface CommentRepository extends JpaRepository<Comment,Long>,CommentRe
 
     long countByBoardAndIsDeleteFalse(Board board);
 //    @Query("SELECT c FROM Comment c JOIN FETCH c.board.user.id JOIN FETCH c.user.id WHERE c.board = :board And c.isDelete = false ORDER BY c.createdAt DESC")
-    @Query("SELECT c FROM Comment c JOIN FETCH c.board JOIN FETCH c.user WHERE c.board = :board And c.isDelete = false ORDER BY c.createdAt DESC")
+    @Query("SELECT c FROM Comment c JOIN FETCH c.board JOIN FETCH c.user WHERE c.board = :board And c.isDelete = false ORDER BY c.createdAt ASC")
     List<Comment> findAllByBoardAndIsDeleteFalseOrderByCreatedAtDescWithBoardAndUser(@Param("board") Board board);
 }

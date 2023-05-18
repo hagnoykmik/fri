@@ -83,6 +83,11 @@
 			box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 			margin-bottom: 30px;
 
+			a {
+				overflow: hidden;
+				word-break: break-all;
+			}
+
 			.detail_contet-bottom {
 				width: 100%;
 				height: auto;

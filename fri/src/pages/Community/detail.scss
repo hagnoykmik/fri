@@ -1,7 +1,7 @@
 .board_detail {
 	height: 100vh;
 	width: 100vw;
-	overflow-y: scroll;
+	overflow: scroll;
 
 	#back {
 		position: fixed;
@@ -23,7 +23,7 @@
 		.detail_title {
 			width: calc(100vw - 80px);
 			height: 40px;
-			font-size: 2rem;
+			font-size: 1rem;
 			overflow-x: scroll;
 			margin-top: 20px;
 		}

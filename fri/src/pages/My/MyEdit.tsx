@@ -170,7 +170,7 @@ export default function MyEdit() {
         </div>
         <div className="edit-box">
           <div className="edit-title">프로필 이미지 수정</div>
-          <div className="select-img">
+          <div className="select-img" style={{overflowY : "scroll"}}>
             {images.length === 1 ? (
               <div className="profile-img-box ">로딩중</div>
             ) : (

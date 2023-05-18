@@ -20,7 +20,7 @@ interface Error {
 }
 
 const Cate = ["맛집", "정보", "Git", "Job", "자유", "Q&A"];
-const api_url = process.env.REACT_APP_TEST_API;
+const api_url = process.env.REACT_APP_REST_API;
 
 function AddCom() {
   const [form, setForm] = useState<PostForm>({

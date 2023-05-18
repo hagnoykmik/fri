@@ -63,7 +63,7 @@ function ComDetail() {
         ></div>
       );
     } else {
-      return <div>{text}</div>;
+      return <div className="message mine">{text}</div>;
     }
   };
 	const delPost = async() => {
@@ -170,14 +170,15 @@ function ComDetail() {
 			</div>
 			<div className="detail_image">
 				{
-					data?.boardImage.length && data?.boardImage.length > 1 &&				
-					data?.boardImage.map((url, index) => (
-						<div className="imgs"  key={index} ><img src={url} className="imgs" alt="img"/></div>
-					))
-				}
-				{
-					data?.boardImage.length && data?.boardImage.length === 1 &&								
-					<div className="img"><img src={data?.boardImage[0]} alt="img"/></div>
+					data?.boardImage.length ? 
+					(
+						data.boardImage.length === 1 ?
+						<div className="img"><img src={data?.boardImage[0]} alt="img"/></div> :
+						data?.boardImage.map((url, index) => (
+							<div className="imgs"  key={index} ><img src={url} className="imgs" alt="img"/></div>
+						))
+					) :
+					null
 				}
 			</div>
 			{

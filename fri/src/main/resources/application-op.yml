@@ -57,8 +57,8 @@ spring:
   # springboot 파일 기본 용량제한 1MB -> 3MB
   servlet:
     multipart:
-      max-file-size: 3MB
-      max-request-size: 3MB
+      max-file-size: 20MB
+      max-request-size: 20MB
 
 mail:
   smtp:

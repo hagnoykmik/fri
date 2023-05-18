@@ -20,7 +20,7 @@ interface Error {
 }
 
 const Cate = ["맛집", "정보", "Git", "Job", "자유", "Q&A"];
-const api_url = process.env.REACT_APP_REST_API;
+const api_url = process.env.REACT_APP_TEST_API;
 
 function AddCom() {
   const [form, setForm] = useState<PostForm>({
@@ -42,6 +42,7 @@ function AddCom() {
   const [images, setImages] = useState<string[]>([]);
 
   const [isAreaDown, setIsAreaDown] = useState(false);
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   const userId = useSelector((state: RootState) => {
@@ -140,7 +141,8 @@ function AddCom() {
       });
       navigate("/board/" + res.data.boardId)
     } catch (e) {
-      console.log(e);
+      setLoading(false);
+      alert("서버가 불안정합니다. \n 잠시 후 다시 시도해 주세요.")
     }
   };
 
@@ -177,7 +179,7 @@ function AddCom() {
             formData.append("boardImage", fileObj);
           });
         }
-
+        setLoading(true);
         createPost(formData);
       } else {
         alert("잘못된 입력입니다.");
@@ -333,7 +335,20 @@ function AddCom() {
               </div>
             </div>
           </div>
-          <button
+          {
+            loading ?
+            (
+              <div className="spinner">
+                <div className="spinner-wrapper">
+                  <div className="rotator">
+                    <div className="inner-spin"></div>
+                    <div className="inner-spin"></div>
+                  </div>
+                </div>
+              </div>
+            )
+            :
+            <button
             className="post-btn"
             id={
               Object.values(error).every((value) => value === true)
@@ -343,6 +358,7 @@ function AddCom() {
           >
             게시하기
           </button>
+          }
         </form>
       </div>
     </div>

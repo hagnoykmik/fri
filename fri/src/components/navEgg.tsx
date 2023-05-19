@@ -54,7 +54,7 @@ function Nav({isnav, setIsnav} : navType) {
 				<img src={plus} id="create" style={isnav ? {bottom : "320px"} : {bottom : "-190px"}} onClick={()=>checkEgg()} />
 				<div id="home" style={isnav ? {bottom : "270px"} : {bottom : "-130px"}} onClick={() => navigate("/main")}>홈</div>
 				<div id="meet" style={isnav ? {bottom : "255px"} : {bottom : "-55px"}} onClick={goChat}><img src={Met} alt="com" /></div>
-				<div id="commu" style={isnav ? {bottom : "90px"} : {bottom : "-90px"}} onClick={() => navigate("/board")}><img src={Com} alt="com" /></div>
+				<div id="commu" style={isnav ? {bottom : "90px"} : {bottom : "-90px"}} onClick={() => navigate("/board?cate=HOT")}><img src={Com} alt="com" /></div>
 				<div id="my" style={isnav ? {bottom : "100px"} : {bottom : "-65px"}} onClick={() => navigate("/my")}><img src={Pro} alt="com" /></div>
 				<div id="game" style={isnav ? {bottom : "240px"} : {bottom : "-55px"}} onClick={goGame}><img src={Gam} alt="com" /></div>        
 				<img src={egg_nav} alt="nav_egg" id="egg_nav" style={isnav ? {bottom : "10px"} : {bottom : "-300px"}} onClick={() => setIsnav(false)}/>

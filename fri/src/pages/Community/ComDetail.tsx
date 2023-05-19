@@ -145,7 +145,7 @@ function ComDetail() {
 
     return (
       <div className="board_detail">
-		<img src={Back} alt="<" id="back" onClick={() => navigate('/board')}/>
+		<img src={Back} alt="<" id="back" onClick={() => navigate(-1)}/>
 		<div className="detail_scroll">
 			<div className="detail_title">{data?.title}</div>
 			<div className="detail-rd">

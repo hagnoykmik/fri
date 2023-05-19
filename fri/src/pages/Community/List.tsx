@@ -4,7 +4,7 @@ import { RootState } from "../../redux/store";
 import { useEffect, useState } from "react";
 import Sort from "../../assets/Sort.png";
 import OneBoard from "../../components/Board/OneBoard";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import Pencil from "../../assets/Pencil.png"
 import axios from "axios";
 import Nav from "../../components/navEgg";
@@ -29,7 +29,9 @@ function List() {
   const [select, setSelect] = useState(false);
 	const api_url = process.env.REACT_APP_REST_API;
 	const navigate = useNavigate();
-	const [category, setCategory] = useState("HOT");
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
+	const [category, setCategory] = useState(queryParams.get("cate"));
 	const [isnav, setIsnav] = useState(false);
 	const userId = useSelector((state: RootState) => {
 			return state.strr.userId;
@@ -61,22 +63,25 @@ function List() {
     } catch (e) {
       console.log(e);
     }
+    navigate("/board?cate=" + area);
   };
     
     useEffect(() => {
+      if(category === undefined || category === "") return;
+      setCategory(queryParams.get("cate"))
         const getData = async () => {
             const header = {
               Authorization: Number(userId),
               "Content-Type": "application/json"
             };
             try {
-              const res = await axios.get(api_url + `board/list?boardCategory=HOT`, {headers: header});
+              const res = await axios.get(api_url + `board/list?boardCategory=${queryParams.get("cate")}`, {headers: header});
               setData(res.data.boardList);
               setSortdata(res.data.boardList);
             }catch(e){console.log(e)};
         }
         getData();
-    }, [])
+    }, [queryParams.get("cate")])
 
     return (
       <div className="boardpage">
